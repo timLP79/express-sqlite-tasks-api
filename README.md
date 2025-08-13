@@ -11,8 +11,7 @@ Currently **functional and in active development** 🚀.
 - 📋 **List** tasks with:
   - 🔍 Filtering by completion status
   - 📝 Text search in titles
-  - 📊 Sorting by title or completion status
-  - 📄 Pagination with `limit` and `offset`  
+  - 📊 Sorting by title or completion status 
 - ✏️ **Update** existing tasks  
 - ❌ **Delete** tasks  
 - 💾 **SQLite** for easy local storage  
@@ -51,3 +50,4 @@ Example request: GET /tasks?done=1&q=meeting&sort=title&dir=asc
   - 🗂️ **Implement** task categories for better organization
   - 🧪 **Create** unit tests for core API functions
   - 💻 **Add** a frontend interface to interact with the API visually
+  - 📄 **Add** Pagination with `limit` and `offset`
