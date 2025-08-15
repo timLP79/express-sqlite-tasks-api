@@ -7,6 +7,13 @@ app.use(express.json());
 //simple health check
 app.get('/health', (req, res) => res.json({ok: true}));
 
+//start server
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`API listening on http://localhost:${PORT}`);
+    console.log('Using SQLite version: ' + process.versions.sqlite);
+})
+
 //Get all tasks
 app.get('/tasks', (req, res) => {
     let sql = 'SELECT id, title, done FROM tasks';
