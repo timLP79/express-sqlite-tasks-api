@@ -1,53 +1,81 @@
-# 📝 Express + SQLite Tasks API
+# Express + SQLite Tasks API
 
-A simple yet powerful **Tasks API** built with **Express.js** and **SQLite**.  
-Supports creating, reading, updating, deleting, filtering, searching, sorting, and pagination of tasks.  
-Currently **functional and in active development** 🚀.
+A REST API for managing tasks, built with Node.js, Express, and SQLite. Supports full CRUD with filtering, text search, sorting, and pagination.
 
 ---
 
-## ✨ Features
-- ➕ **Create** new tasks  
-- 📋 **List** tasks with:
-  - 🔍 Filtering by completion status
-  - 📝 Text search in titles
-  - 📊 Sorting by title or completion status 
-- ✏️ **Update** existing tasks  
-- ❌ **Delete** tasks  
-- 💾 **SQLite** for easy local storage  
+## Tech Stack
+
+- Node.js
+- Express v5
+- SQLite3
 
 ---
 
-## 📦 Installation
+## Features
+
+- Create, read, update, and delete tasks
+- Filter tasks by completion status
+- Full-text search on task titles
+- Sort by title or completion status (ascending/descending)
+- Paginate results with `limit` and `offset`
+
+---
+
+## Getting Started
+
+### Installation
+
 ```bash
-# Clone this repository
 git clone git@github.com:timLP79/express-sqlite-tasks-api.git
-
-# Go inside the project folder
 cd express-sqlite-tasks-api
-
-# Install dependencies
 npm install
 ```
----
 
-## ▶️ Usage
+### Usage
 
 ```bash
-# Start the server
-node index.js
+npm start
 ```
 
-The API will be available at http://localhost:3000  
-Example request: GET /tasks?done=1&q=meeting&sort=title&dir=asc
+The API will be available at `http://localhost:3000`.
+
+Example request:
+
+```
+GET /tasks?done=1&q=meeting&sort=title&dir=asc
+```
 
 ---
 
-## 🔮 Next Steps
-- Planned improvements for future updates:
-  - 🛠️ **Add** more robust error handling for invalid query parameters
-  - 🧩 **Add** support for partial updates (PATCH)
-  - 🗂️ **Implement** task categories for better organization
-  - 🧪 **Create** unit tests for core API functions
-  - 💻 **Add** a frontend interface to interact with the API visually
-  - 📄 **Add** Pagination with `limit` and `offset`
+## Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/tasks` | List tasks (filtering, search, sort, pagination) |
+| POST | `/tasks` | Create a new task |
+| PUT | `/tasks/:id` | Update a task |
+| DELETE | `/tasks/:id` | Delete a task |
+
+---
+
+## Project Structure
+
+```
+express-sqlite-tasks-api/
+├── src/
+│   ├── index.js        # Express app and route handlers
+│   └── db.js           # SQLite database setup
+├── data.sql            # Database schema
+├── requests.http       # Manual HTTP test requests
+├── package.json
+└── README.md
+```
+
+---
+
+## Contact
+
+- Email: timpalacios@u.boisestate.edu
+- GitHub: [@timLP79](https://github.com/timLP79)
+- LinkedIn: [tim-palacios](https://www.linkedin.com/in/tim-palacios/)
