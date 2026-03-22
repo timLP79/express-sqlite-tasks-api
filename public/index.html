@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="page">
+
+        <header class="header">
+            <div class="header-card">
+                <h1 class="app-title">
+                    <span class="bracket">[</span>TASKS<span class="bracket">]</span>
+                </h1>
+                <p class="app-sub">Node.js &bull; Express &bull; SQLite</p>
+            </div>
+        </header>
+
+        <main class="main">
+
+            <form class="add-form" id="addForm" autocomplete="off">
+                <input
+                    type="text"
+                    class="add-input"
+                    id="addInput"
+                    placeholder="What needs to be done?"
+                    maxlength="200"
+                    aria-label="New task title"
+                />
+                <button type="submit" class="add-btn">Add</button>
+            </form>
+
+            <div class="toolbar">
+                <div class="filter-group" id="filterGroup" role="group" aria-label="Filter tasks">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+                <input
+                    type="search"
+                    class="search-input"
+                    id="searchInput"
+                    placeholder="Search tasks..."
+                    autocomplete="off"
+                    aria-label="Search tasks"
+                />
+            </div>
+
+            <div
+                id="errorBanner"
+                class="error-banner"
+                role="alert"
+                aria-live="assertive"
+                hidden
+            ></div>
+
+            <div id="loadingBar" class="loading-bar" aria-hidden="true">
+                <div class="loading-fill"></div>
+            </div>
+
+            <div id="taskList" class="task-list" role="list" aria-label="Tasks"></div>
+
+            <div id="emptyState" class="empty-state" hidden>
+                <p class="empty-title">No tasks found.</p>
+                <p class="empty-sub">Add one above to get started.</p>
+            </div>
+
+            <footer class="footer">
+                <span id="taskCount" class="task-count" aria-live="polite"></span>
+                <span class="footer-hint">Double-click a task to edit</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

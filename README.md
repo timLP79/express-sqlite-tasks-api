@@ -1,6 +1,6 @@
 # Express + SQLite Tasks API
 
-A REST API for managing tasks, built with Node.js, Express, and SQLite. Supports full CRUD with filtering, text search, sorting, and pagination.
+A full-stack task manager built with Node.js, Express, and SQLite. Includes a clean front-end UI served directly from Express, with full CRUD, filtering, text search, sorting, and inline editing.
 
 ---
 
