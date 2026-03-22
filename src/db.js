@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-// Put the DB file at the project root
-const dbPath = path.join(__dirname, '..', 'data.db');
+// Use DB_PATH env var if set (e.g. ':memory:' in tests), otherwise default to project root
+const dbPath = process.env.DB_PATH || path.join(__dirname, '..', 'data.db');
 
 // Open the database connection
 const db = new sqlite3.Database(dbPath, (err) => {

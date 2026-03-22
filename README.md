@@ -9,6 +9,7 @@ A full-stack task manager built with Node.js, Express, and SQLite. Includes a cl
 - Node.js
 - Express v5
 - SQLite3
+- Jest + Supertest (testing)
 
 ---
 
@@ -17,8 +18,7 @@ A full-stack task manager built with Node.js, Express, and SQLite. Includes a cl
 - Create, read, update, and delete tasks
 - Filter tasks by completion status
 - Full-text search on task titles
-- Sort by title or completion status (ascending/descending)
-- Paginate results with `limit` and `offset`
+- Sort by id, title, or completion status (ascending/descending)
 
 ---
 
@@ -52,9 +52,11 @@ GET /tasks?done=1&q=meeting&sort=title&dir=asc
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/tasks` | List tasks (filtering, search, sort, pagination) |
+| GET | `/health` | Health check |
+| GET | `/tasks` | List tasks (filter by `done`, search with `q`, sort with `sort`/`dir`) |
 | POST | `/tasks` | Create a new task |
-| PUT | `/tasks/:id` | Update a task |
+| GET | `/tasks/:id` | Get a single task by id |
+| PUT | `/tasks/:id` | Update a task (title and/or done) |
 | DELETE | `/tasks/:id` | Delete a task |
 
 ---
@@ -66,11 +68,31 @@ express-sqlite-tasks-api/
 ├── src/
 │   ├── index.js        # Express app and route handlers
 │   └── db.js           # SQLite database setup
+├── public/
+│   ├── index.html      # Front-end UI
+│   ├── styles.css
+│   └── app.js
+├── tests/
+│   ├── setup.js        # Jest setup (points SQLite to :memory:)
+│   └── tasks.test.js   # API integration tests (25 tests)
 ├── data.sql            # Database schema
+├── jest.config.js
 ├── requests.http       # Manual HTTP test requests
 ├── package.json
 └── README.md
 ```
+
+---
+
+## Testing
+
+Tests use Jest and Supertest. Each test run uses an in-memory SQLite database -- your `data.db` is never touched.
+
+```bash
+npm test
+```
+
+25 integration tests cover all endpoints: happy paths, validation errors, 404s, partial updates, filtering, search, and deletion confirmation.
 
 ---
 

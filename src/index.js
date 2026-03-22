@@ -9,12 +9,16 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 //simple health check
 app.get('/health', (req, res) => res.json({ok: true}));
 
-//start server
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`API listening on http://localhost:${PORT}`);
-    console.log('Using SQLite version: ' + process.versions.sqlite);
-})
+// Start server only when run directly, not when imported by tests
+if (require.main === module) {
+    const PORT = 3000;
+    app.listen(PORT, () => {
+        console.log(`API listening on http://localhost:${PORT}`);
+        console.log('Using SQLite version: ' + process.versions.sqlite);
+    });
+}
+
+module.exports = app;
 
 //Get all tasks
 app.get('/tasks', (req, res) => {
